@@ -1,0 +1,5 @@
+stack: python
+install_cmd: pip install -r requirements.in
+test_cmd: python -m pytest -q
+test_selector: python -m pytest -q {path}
+dependency_file: requirements.in
