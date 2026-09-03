@@ -1,5 +1,12 @@
 {
   "private": true,
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "react": "*",
+    "typescript": "*",
+    "uuid": "*"
+  },
+  "devDependencies": {
+    "vitest": "*"
+  }
 }
