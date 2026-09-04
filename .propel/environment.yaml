@@ -1,0 +1,5 @@
+stack: node
+install_cmd: npm install
+test_cmd: npx vitest run
+test_selector: npx vitest run {path}
+dependency_file: package.json
