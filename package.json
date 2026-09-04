@@ -2,9 +2,7 @@
   "private": true,
   "version": "0.0.0",
   "dependencies": {
-    "react": "*",
-    "typescript": "*",
-    "uuid": "*"
+    "typescript": "*"
   },
   "devDependencies": {
     "vitest": "*"
