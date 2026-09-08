@@ -1,5 +1,8 @@
-stack: node
+stack: node-vitest
 install_cmd: npm install
+syntax_cmd: find . -path ./node_modules -prune -o \( -name '*.js' -o -name '*.mjs'
+  -o -name '*.cjs' \) -print0 | xargs -0 -r -n1 node --check
+build_cmd: npm run build --if-present
 test_cmd: npx vitest run
 test_selector: npx vitest run {path}
 dependency_file: package.json
