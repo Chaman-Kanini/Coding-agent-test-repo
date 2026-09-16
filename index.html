@@ -3,9 +3,443 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Application</title>
+    <title>FocusFlow | AI Productivity for Small Teams</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --surface-soft: #eef2ff;
+        --text: #14213d;
+        --muted: #465274;
+        --primary: #3a63ff;
+        --primary-dark: #2c4be0;
+        --accent: #10b981;
+        --border: #d9e1f2;
+        --shadow: 0 16px 40px rgba(20, 33, 61, 0.12);
+        --radius: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      body {
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a,
+      button {
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 10px;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(8px);
+        background: rgba(245, 247, 251, 0.92);
+        border-bottom: 1px solid rgba(217, 225, 242, 0.8);
+      }
+
+      .header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 4.75rem;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 1.2rem;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--text);
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 600;
+      }
+
+      nav a:hover {
+        border-color: var(--border);
+        background: var(--surface);
+      }
+
+      main {
+        overflow-x: clip;
+      }
+
+      section {
+        padding: 4.5rem 0;
+      }
+
+      .hero {
+        padding-top: 5.25rem;
+      }
+
+      .hero-wrap {
+        background: linear-gradient(140deg, #eaf0ff, #ffffff 50%, #f0fbf8);
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius) + 6px);
+        box-shadow: var(--shadow);
+        padding: clamp(1.5rem, 5vw, 3.5rem);
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        line-height: 1.2;
+        margin: 0 0 1rem;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 58ch;
+      }
+
+      .actions {
+        margin-top: 1.6rem;
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        text-decoration: none;
+        font-weight: 700;
+        padding: 0.75rem 1.1rem;
+        border-radius: 10px;
+        border: 1px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: #ffffff;
+        border-color: var(--border);
+        color: var(--text);
+      }
+
+      .hero-panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+      }
+
+      .hero-panel h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1rem;
+      }
+
+      .hero-panel ul {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+
+      .section-title {
+        margin: 0 0 0.8rem;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+      }
+
+      .section-intro {
+        margin: 0;
+        color: var(--muted);
+        max-width: 64ch;
+      }
+
+      .grid {
+        margin-top: 1.5rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .three-col {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.2rem;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 0.55rem;
+        font-size: 1.15rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .testimonial {
+        border-left: 4px solid var(--primary);
+      }
+
+      .pricing .card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .price {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--text);
+      }
+
+      .pricing ul {
+        margin: 0;
+        padding-left: 1.1rem;
+        color: var(--muted);
+      }
+
+      .pricing .btn {
+        margin-top: auto;
+      }
+
+      .final-cta {
+        text-align: center;
+      }
+
+      .final-cta .panel {
+        background: var(--text);
+        color: #e9f0ff;
+        border-radius: calc(var(--radius) + 4px);
+        padding: clamp(1.5rem, 5vw, 3rem);
+      }
+
+      .final-cta h2 {
+        margin-top: 0;
+        color: #ffffff;
+      }
+
+      .final-cta p {
+        margin: 0 auto 1.25rem;
+        max-width: 60ch;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 0 2rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero-wrap,
+        .three-col {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 3.5rem 0;
+        }
+
+        .header-row {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 0.8rem 0;
+        }
+
+        nav ul {
+          justify-content: flex-start;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main id="app"></main>
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="#top">FocusFlow</a>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#social-proof">Social Proof</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#get-started">Get Started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container hero-wrap">
+          <div>
+            <h1 id="hero-heading">FocusFlow is the AI-powered todo and productivity assistant for small teams.</h1>
+            <p>
+              Stop juggling scattered chats and disconnected tasks. FocusFlow captures work from every
+              channel, turns it into clear priorities, and helps your team deliver with less noise.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#get-started">Start free trial</a>
+              <a class="btn btn-secondary" href="#pricing">Compare plans</a>
+            </div>
+          </div>
+          <aside class="hero-panel" aria-label="FocusFlow outcomes">
+            <h2>Teams choose FocusFlow to:</h2>
+            <ul>
+              <li>Automate recurring planning and standup tasks</li>
+              <li>Identify blockers before deadlines slip</li>
+              <li>Keep everyone aligned with real-time AI summaries</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="features" aria-labelledby="features-heading">
+        <div class="container">
+          <h2 class="section-title" id="features-heading">Feature Highlights</h2>
+          <p class="section-intro">Purpose-built workflows that help small teams move from to-do chaos to confident delivery.</p>
+          <div class="grid three-col">
+            <article class="card">
+              <h3>Smart Task Capture</h3>
+              <p>Turn Slack notes, email requests, and meeting action items into assigned tasks instantly.</p>
+            </article>
+            <article class="card">
+              <h3>AI Priority Coaching</h3>
+              <p>Get recommendations on what to tackle now based on impact, deadlines, and team capacity.</p>
+            </article>
+            <article class="card">
+              <h3>Weekly Momentum Reports</h3>
+              <p>Share progress snapshots and risk alerts with stakeholders in one click.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="social-proof" aria-labelledby="social-proof-heading">
+        <div class="container">
+          <h2 class="section-title" id="social-proof-heading">Social Proof</h2>
+          <p class="section-intro">Trusted by fast-moving teams that need reliable execution, not more busywork.</p>
+          <div class="grid three-col">
+            <article class="card testimonial">
+              <h3>Nova Studio</h3>
+              <p>"FocusFlow cut weekly planning time by 40% and gave us clarity across design and engineering."</p>
+            </article>
+            <article class="card testimonial">
+              <h3>CloudMint</h3>
+              <p>"Our launches stay on track because everyone sees priorities and blockers in one place."</p>
+            </article>
+            <article class="card testimonial">
+              <h3>BeaconOps</h3>
+              <p>"The AI summaries keep leadership updated without extra status meetings."</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing" aria-labelledby="pricing-heading">
+        <div class="container">
+          <h2 class="section-title" id="pricing-heading">Pricing</h2>
+          <p class="section-intro">Simple plans that grow with your team.</p>
+          <div class="grid three-col">
+            <article class="card">
+              <h3>Starter</h3>
+              <p class="price">$0/month</p>
+              <ul>
+                <li>Up to 5 teammates</li>
+                <li>Core task automation</li>
+              </ul>
+              <a class="btn btn-secondary" href="#get-started">Get started free</a>
+            </article>
+            <article class="card">
+              <h3>Growth</h3>
+              <p class="price">$19/user/mo</p>
+              <ul>
+                <li>Unlimited projects</li>
+                <li>Advanced AI insights</li>
+              </ul>
+              <a class="btn btn-primary" href="#get-started">Start Growth trial</a>
+            </article>
+            <article class="card">
+              <h3>Scale</h3>
+              <p class="price">$49/user/mo</p>
+              <ul>
+                <li>Custom workflow automations</li>
+                <li>Priority support and onboarding</li>
+              </ul>
+              <a class="btn btn-secondary" href="#get-started">Contact sales</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="get-started" class="final-cta" aria-labelledby="final-cta-heading">
+        <div class="container panel">
+          <h2 id="final-cta-heading">Ready to help your team focus and ship faster?</h2>
+          <p>Join thousands of small teams using FocusFlow to turn daily work into measurable momentum.</p>
+          <a class="btn btn-primary" href="#top">Create your FocusFlow workspace</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><strong>FocusFlow</strong> · AI-powered productivity for small teams.</p>
+        <p>© 2026 FocusFlow Inc. All rights reserved. Privacy · Terms · Contact</p>
+      </div>
+    </footer>
   </body>
 </html>
