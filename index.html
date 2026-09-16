@@ -17,6 +17,27 @@
         --border: #d9e1f2;
         --shadow: 0 16px 40px rgba(20, 33, 61, 0.12);
         --radius: 16px;
+        --header-bg: rgba(245, 247, 251, 0.92);
+        --header-border: rgba(217, 225, 242, 0.8);
+        --toggle-bg: #ffffff;
+        --toggle-hover-bg: #eef2ff;
+      }
+
+      :root[data-theme='dark'] {
+        --bg: #0f172a;
+        --surface: #111c32;
+        --surface-soft: #1b2947;
+        --text: #e2e8f0;
+        --muted: #b4c0da;
+        --primary: #7c98ff;
+        --primary-dark: #a4b9ff;
+        --accent: #34d399;
+        --border: #334155;
+        --shadow: 0 20px 44px rgba(2, 6, 23, 0.55);
+        --header-bg: rgba(15, 23, 42, 0.94);
+        --header-border: rgba(51, 65, 85, 0.9);
+        --toggle-bg: #1e293b;
+        --toggle-hover-bg: #334155;
       }
 
       * {
@@ -64,8 +85,8 @@
         top: 0;
         z-index: 20;
         backdrop-filter: blur(8px);
-        background: rgba(245, 247, 251, 0.92);
-        border-bottom: 1px solid rgba(217, 225, 242, 0.8);
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--header-border);
       }
 
       .header-row {
@@ -108,6 +129,30 @@
       nav a:hover {
         border-color: var(--border);
         background: var(--surface);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .theme-toggle {
+        border: 1px solid var(--border);
+        background: var(--toggle-bg);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 0.45rem 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .theme-toggle:hover {
+        background: var(--toggle-hover-bg);
+      }
+
+      .theme-toggle[aria-pressed='true'] {
+        border-color: var(--primary);
       }
 
       main {
@@ -312,14 +357,19 @@
     <header class="site-header">
       <div class="container header-row">
         <a class="brand" href="#top">FocusFlow</a>
-        <nav aria-label="Primary">
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#social-proof">Social Proof</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#get-started">Get Started</a></li>
-          </ul>
-        </nav>
+        <div class="header-actions">
+          <nav aria-label="Primary">
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#social-proof">Social Proof</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#get-started">Get Started</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Enable dark mode">
+            Dark mode
+          </button>
+        </div>
       </div>
     </header>
 
@@ -441,5 +491,30 @@
         <p>© 2026 FocusFlow Inc. All rights reserved. Privacy · Terms · Contact</p>
       </div>
     </footer>
+
+    <script>
+      (() => {
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (!themeToggle) {
+          return;
+        }
+
+        const root = document.documentElement;
+
+        const applyTheme = (isDark) => {
+          root.dataset.theme = isDark ? 'dark' : 'light';
+          themeToggle.setAttribute('aria-pressed', String(isDark));
+          themeToggle.setAttribute('aria-label', isDark ? 'Enable light mode' : 'Enable dark mode');
+          themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+        };
+
+        applyTheme(false);
+
+        themeToggle.addEventListener('click', () => {
+          const isDark = themeToggle.getAttribute('aria-pressed') === 'true';
+          applyTheme(!isDark);
+        });
+      })();
+    </script>
   </body>
 </html>
