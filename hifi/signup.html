@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Northstar sign-up wireframe">
+    <title>Create an account | Northstar</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap");
+
+      :root { --ink: #15241d; --muted: #65736c; --surface: #ffffff; --line: #dce1dc; --forest: #184f3b; --forest-dark: #10392b; --coral: #f2765d; --sun: #efc95c; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-width: 320px; color: var(--ink); background: var(--surface); font-family: "DM Sans", sans-serif; line-height: 1.5; }
+      a { color: inherit; text-decoration: none; }
+      button, input { font: inherit; }
+      button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 9px; border: 1px solid transparent; border-radius: 6px; padding: 0 20px; color: white; background: var(--forest); font-weight: 700; cursor: pointer; transition: background 180ms ease, transform 180ms ease; }
+      button:hover { background: var(--forest-dark); transform: translateY(-1px); }
+      .icon { width: 19px; height: 19px; flex: 0 0 auto; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; font-family: "Fraunces", serif; font-size: 1.35rem; font-weight: 700; }
+      .brand-mark { position: relative; display: grid; width: 32px; height: 32px; place-items: center; overflow: hidden; border-radius: 50%; background: var(--sun); }
+      .brand-mark::before, .brand-mark::after { position: absolute; width: 18px; height: 26px; border-radius: 50% 50% 0; background: var(--forest); content: ""; }
+      .brand-mark::before { left: 3px; bottom: -9px; transform: rotate(18deg); }
+      .brand-mark::after { right: 1px; bottom: -10px; transform: rotate(-18deg); }
+      h1, p { margin-top: 0; }
+      h1 { font-family: "Fraunces", serif; line-height: 1.05; }
+      .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--coral); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+      .eyebrow::before { width: 32px; height: 2px; background: currentColor; content: ""; }
+      .auth-shell { display: grid; min-height: 100vh; grid-template-columns: minmax(320px, 0.9fr) minmax(540px, 1.1fr); background: var(--surface); }
+      .auth-visual { position: relative; display: flex; min-height: 100vh; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 42px 7vw 52px; color: white; background: linear-gradient(rgba(16, 57, 43, 0.25), rgba(16, 57, 43, 0.9)), url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85") center / cover; }
+      .auth-visual .brand { width: fit-content; }
+      .visual-quote { position: relative; z-index: 1; max-width: 560px; }
+      .visual-quote blockquote { margin: 0 0 26px; font-family: "Fraunces", serif; font-size: clamp(2rem, 3.2vw, 3.6rem); line-height: 1.12; }
+      .quote-author { display: flex; align-items: center; gap: 14px; color: rgba(255, 255, 255, 0.78); }
+      .quote-author strong { display: block; color: white; }
+      .author-mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; color: var(--forest); background: var(--sun); font-weight: 700; }
+      .auth-main { display: flex; min-height: 100vh; flex-direction: column; padding: 36px clamp(28px, 7vw, 110px); }
+      .auth-top { display: flex; justify-content: flex-end; color: var(--muted); font-size: 0.92rem; }
+      .auth-top a { color: var(--forest); font-weight: 700; }
+      .auth-form-wrap { width: min(100%, 470px); margin: auto; padding: 48px 0; }
+      .auth-form-wrap h1 { margin-bottom: 12px; font-size: clamp(2.6rem, 5vw, 4.3rem); }
+      .auth-intro { margin-bottom: 34px; color: var(--muted); }
+      .social-button { width: 100%; border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+      .social-button:hover { border-color: var(--ink); background: var(--surface); }
+      .social-mark { display: grid; width: 22px; height: 22px; place-items: center; border-radius: 50%; color: white; background: #4285f4; font-size: 0.7rem; font-weight: 700; }
+      .divider { display: flex; align-items: center; gap: 16px; margin: 25px 0; color: #95a099; font-size: 0.78rem; text-transform: uppercase; }
+      .divider::before, .divider::after { height: 1px; flex: 1; background: var(--line); content: ""; }
+      .form-grid { display: grid; gap: 19px; }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .field label { display: block; margin-bottom: 7px; font-size: 0.88rem; font-weight: 700; }
+      .field input { width: 100%; min-height: 50px; border: 1px solid var(--line); border-radius: 6px; outline: none; padding: 0 14px; color: var(--ink); background: #fbfcfa; }
+      .field input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(24, 79, 59, 0.1); }
+      .field input::placeholder { color: #a2aba6; }
+      .checkbox { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 0.84rem; }
+      .checkbox input { width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--forest); }
+      .checkbox a { color: var(--forest); font-weight: 700; }
+      .submit-button { width: 100%; margin-top: 4px; }
+      .auth-footnote { margin: 28px 0 0; color: var(--muted); font-size: 0.8rem; text-align: center; }
+      .mobile-brand { display: none; margin-bottom: 45px; }
+      @media (max-width: 900px) { .auth-shell { grid-template-columns: 1fr; } .auth-visual { display: none; } .auth-main { min-height: 100vh; } .mobile-brand { display: inline-flex; } }
+      @media (max-width: 560px) { .auth-main { padding: 26px 22px; } .auth-top { font-size: 0.82rem; } .auth-form-wrap { padding: 32px 0; } .form-row { grid-template-columns: 1fr; } }
+      @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <main class="auth-shell">
+      <aside class="auth-visual">
+        <a class="brand" href="landing.html" aria-label="Northstar home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Northstar
+        </a>
+        <div class="visual-quote">
+          <blockquote>Make a clear plan. Bring your people with you.</blockquote>
+          <div class="quote-author">
+            <span class="author-mark">14</span>
+            <span><strong>14-day free trial</strong>No credit card required</span>
+          </div>
+        </div>
+      </aside>
+
+      <section class="auth-main">
+        <div class="auth-top">Already have an account?&nbsp; <a href="login.html">Log in</a></div>
+        <div class="auth-form-wrap">
+          <a class="brand mobile-brand" href="landing.html" aria-label="Northstar home">
+            <span class="brand-mark" aria-hidden="true"></span>
+            Northstar
+          </a>
+          <p class="eyebrow">Start your workspace</p>
+          <h1>Create your account.</h1>
+          <p class="auth-intro">Bring your first project into focus in minutes.</p>
+
+          <button class="social-button" type="button"><span class="social-mark">G</span>Sign up with Google</button>
+          <div class="divider">or use email</div>
+
+          <form class="form-grid" action="#" method="post">
+            <div class="form-row">
+              <div class="field">
+                <label for="first-name">First name</label>
+                <input id="first-name" name="first-name" type="text" autocomplete="given-name" placeholder="Alex" required>
+              </div>
+              <div class="field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" name="last-name" type="text" autocomplete="family-name" placeholder="Morgan" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field">
+              <label for="password">Create a password</label>
+              <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required>
+            </div>
+            <label class="checkbox" for="terms">
+              <input id="terms" name="terms" type="checkbox" required>
+              <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+            </label>
+            <button class="submit-button" type="submit">Create free account <i class="icon" data-lucide="arrow-right" aria-hidden="true"></i></button>
+          </form>
+          <p class="auth-footnote">Free for 14 days. Cancel anytime.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
