@@ -1,0 +1,20 @@
+{
+  "name": "application",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Created by Propel provisioning for a repository that had no package manifest.",
+  "scripts": {
+    "test": "PLAYWRIGHT_JUNIT_OUTPUT_NAME=.propel/junit.xml npx playwright test --reporter=junit; cat .propel/junit.xml"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "typescript": "*",
+    "react-router": "*",
+    "vite": "*",
+    "playwright": "*"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.47.0"
+  }
+}
