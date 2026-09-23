@@ -1,0 +1,26 @@
+{
+  "name": "application",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Created by Propel provisioning for a repository that had no package manifest.",
+  "scripts": {
+    "test": "PLAYWRIGHT_JUNIT_OUTPUT_NAME=.propel/junit.xml npx playwright test --reporter=junit; cat .propel/junit.xml",
+    "dev": "vite --host 127.0.0.1 --port 4173 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "typescript": "*",
+    "react-router": "*",
+    "playwright": "*"
+  },
+  "devDependencies": {
+    "vite": "5.4.10",
+    "@vitejs/plugin-react": "4.3.3",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "@playwright/test": "1.47.0"
+  }
+}
