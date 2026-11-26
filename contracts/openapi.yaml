@@ -1,0 +1,291 @@
+components:
+    schemas:
+        Label:
+            properties:
+                colour:
+                    type: string
+                id:
+                    format: uuid
+                    type: string
+                name:
+                    type: string
+            required:
+                - id
+                - name
+            type: object
+        LabelInput:
+            properties:
+                colour:
+                    type: string
+                name:
+                    type: string
+            required:
+                - name
+            type: object
+        TaskItem:
+            properties:
+                createdAt:
+                    format: date-time
+                    type: string
+                dueDate:
+                    format: date
+                    type: string
+                id:
+                    format: uuid
+                    type: string
+                isDone:
+                    type: boolean
+                title:
+                    type: string
+            required:
+                - id
+                - title
+            type: object
+        TaskItemInput:
+            properties:
+                createdAt:
+                    format: date-time
+                    type: string
+                dueDate:
+                    format: date
+                    type: string
+                isDone:
+                    type: boolean
+                title:
+                    type: string
+            required:
+                - title
+            type: object
+        TeamMember:
+            properties:
+                email:
+                    type: string
+                id:
+                    format: uuid
+                    type: string
+                name:
+                    type: string
+            required:
+                - id
+                - name
+                - email
+            type: object
+        TeamMemberInput:
+            properties:
+                email:
+                    type: string
+                name:
+                    type: string
+            required:
+                - name
+                - email
+            type: object
+info:
+    title: TaskTracker API
+    version: 0.1.0
+openapi: 3.0.3
+paths:
+    /api/labels:
+        get:
+            operationId: ListLabels
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Label'
+                                type: array
+                    description: OK
+            summary: List labels
+        post:
+            operationId: CreateLabel
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/LabelInput'
+                required: true
+            responses:
+                "201":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Label'
+                    description: OK
+            summary: Create label
+    /api/labels/{id}:
+        delete:
+            operationId: DeleteLabel
+            responses:
+                "204":
+                    description: Deleted
+        get:
+            operationId: GetLabel
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Label'
+                    description: OK
+            summary: Get one label
+        parameters:
+            - in: path
+              name: id
+              required: true
+              schema:
+                format: uuid
+                type: string
+        put:
+            operationId: UpdateLabel
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/LabelInput'
+                required: true
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Label'
+                    description: OK
+            summary: Update label
+    /api/task-items:
+        get:
+            operationId: ListTaskItems
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/TaskItem'
+                                type: array
+                    description: OK
+            summary: List task-items
+        post:
+            operationId: CreateTaskItem
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/TaskItemInput'
+                required: true
+            responses:
+                "201":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TaskItem'
+                    description: OK
+            summary: Create task-item
+    /api/task-items/{id}:
+        delete:
+            operationId: DeleteTaskItem
+            responses:
+                "204":
+                    description: Deleted
+        get:
+            operationId: GetTaskItem
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TaskItem'
+                    description: OK
+            summary: Get one task-item
+        parameters:
+            - in: path
+              name: id
+              required: true
+              schema:
+                format: uuid
+                type: string
+        put:
+            operationId: UpdateTaskItem
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/TaskItemInput'
+                required: true
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TaskItem'
+                    description: OK
+            summary: Update task-item
+    /api/team-members:
+        get:
+            operationId: ListTeamMembers
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/TeamMember'
+                                type: array
+                    description: OK
+            summary: List team-members
+        post:
+            operationId: CreateTeamMember
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/TeamMemberInput'
+                required: true
+            responses:
+                "201":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TeamMember'
+                    description: OK
+            summary: Create team-member
+    /api/team-members/{id}:
+        delete:
+            operationId: DeleteTeamMember
+            responses:
+                "204":
+                    description: Deleted
+        get:
+            operationId: GetTeamMember
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TeamMember'
+                    description: OK
+            summary: Get one team-member
+        parameters:
+            - in: path
+              name: id
+              required: true
+              schema:
+                format: uuid
+                type: string
+        put:
+            operationId: UpdateTeamMember
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/TeamMemberInput'
+                required: true
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TeamMember'
+                    description: OK
+            summary: Update team-member
