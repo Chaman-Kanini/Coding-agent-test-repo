@@ -1,0 +1,69 @@
+{
+  "project": "TaskTracker",
+  "skills": [
+    {
+      "name": "dotnet-api",
+      "version": "1.0.0"
+    },
+    {
+      "name": "react-app",
+      "version": "1.0.0"
+    },
+    {
+      "name": "postgres",
+      "version": "1.0.0"
+    },
+    {
+      "name": "project-base",
+      "version": "1.0.0"
+    }
+  ],
+  "contracts_digest": "8db28f7ce5f5aace42c90cf6c4acff9c9678e05abe5ff8d4bfafa2bb7fc9c669",
+  "files": [
+    ".env.example",
+    ".gitignore",
+    "README.md",
+    "backend/Dockerfile",
+    "backend/src/TaskTracker.Api/Controllers/LabelsController.cs",
+    "backend/src/TaskTracker.Api/Controllers/TaskItemsController.cs",
+    "backend/src/TaskTracker.Api/Controllers/TeamMembersController.cs",
+    "backend/src/TaskTracker.Api/Middleware/ErrorHandlingMiddleware.cs",
+    "backend/src/TaskTracker.Api/Program.cs",
+    "backend/src/TaskTracker.Api/TaskTracker.Api.csproj",
+    "backend/src/TaskTracker.Api/appsettings.json",
+    "backend/src/TaskTracker.Application/DependencyInjection.cs",
+    "backend/src/TaskTracker.Application/Interfaces/ILabelService.cs",
+    "backend/src/TaskTracker.Application/Interfaces/ITaskItemService.cs",
+    "backend/src/TaskTracker.Application/Interfaces/ITeamMemberService.cs",
+    "backend/src/TaskTracker.Application/Services/LabelService.cs",
+    "backend/src/TaskTracker.Application/Services/TaskItemService.cs",
+    "backend/src/TaskTracker.Application/Services/TeamMemberService.cs",
+    "backend/src/TaskTracker.Application/TaskTracker.Application.csproj",
+    "backend/src/TaskTracker.Domain/Entities/Label.cs",
+    "backend/src/TaskTracker.Domain/Entities/TaskItem.cs",
+    "backend/src/TaskTracker.Domain/Entities/TeamMember.cs",
+    "backend/src/TaskTracker.Domain/TaskTracker.Domain.csproj",
+    "backend/src/TaskTracker.Infrastructure/Data/AppDbContext.cs",
+    "backend/src/TaskTracker.Infrastructure/DependencyInjection.cs",
+    "backend/src/TaskTracker.Infrastructure/TaskTracker.Infrastructure.csproj",
+    "backend/tests/TaskTracker.Tests/SmokeTests.cs",
+    "backend/tests/TaskTracker.Tests/TaskTracker.Tests.csproj",
+    "ci/github-actions.yml",
+    "contracts/openapi.yaml",
+    "contracts/routes.json",
+    "db/README.md",
+    "db/migrations/0001_init.sql",
+    "docker-compose.yml",
+    "frontend/src/App.tsx",
+    "frontend/src/core/api.ts",
+    "frontend/src/features/label/LabelPage.tsx",
+    "frontend/src/features/label/label.service.ts",
+    "frontend/src/features/task-item/TaskItemPage.tsx",
+    "frontend/src/features/task-item/task-item.service.ts",
+    "frontend/src/features/team-member/TeamMemberPage.tsx",
+    "frontend/src/features/team-member/team-member.service.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/shared/PageHeader.tsx"
+  ],
+  "created": "2026-11-26T11:01:04.373017097Z"
+}
