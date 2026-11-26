@@ -1,0 +1,14 @@
+{
+  "Label": [
+    "/labels",
+    "/labels/:id"
+  ],
+  "TaskItem": [
+    "/task-items",
+    "/task-items/:id"
+  ],
+  "TeamMember": [
+    "/team-members",
+    "/team-members/:id"
+  ]
+}
