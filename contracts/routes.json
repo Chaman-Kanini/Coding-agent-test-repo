@@ -1,0 +1,22 @@
+{
+  "Cart": [
+    "/carts",
+    "/carts/:id"
+  ],
+  "Customer": [
+    "/customers",
+    "/customers/:id"
+  ],
+  "Order": [
+    "/orders",
+    "/orders/:id"
+  ],
+  "OrderItem": [
+    "/order-items",
+    "/order-items/:id"
+  ],
+  "Product": [
+    "/products",
+    "/products/:id"
+  ]
+}
