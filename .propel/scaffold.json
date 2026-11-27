@@ -1,0 +1,81 @@
+{
+  "project": "ECommercePlatform",
+  "skills": [
+    {
+      "name": "dotnet-api",
+      "version": "1.0.0"
+    },
+    {
+      "name": "react-app",
+      "version": "1.0.0"
+    },
+    {
+      "name": "postgres",
+      "version": "1.0.0"
+    },
+    {
+      "name": "project-base",
+      "version": "1.0.0"
+    }
+  ],
+  "contracts_digest": "9022487aab72cd3bec841513f1cc8291f3255d6bb282700e9610a19a40cd03c6",
+  "files": [
+    ".env.example",
+    ".gitignore",
+    "README.md",
+    "backend/Dockerfile",
+    "backend/src/ECommercePlatform.Api/Controllers/CartsController.cs",
+    "backend/src/ECommercePlatform.Api/Controllers/CustomersController.cs",
+    "backend/src/ECommercePlatform.Api/Controllers/OrderItemsController.cs",
+    "backend/src/ECommercePlatform.Api/Controllers/OrdersController.cs",
+    "backend/src/ECommercePlatform.Api/Controllers/ProductsController.cs",
+    "backend/src/ECommercePlatform.Api/ECommercePlatform.Api.csproj",
+    "backend/src/ECommercePlatform.Api/Middleware/ErrorHandlingMiddleware.cs",
+    "backend/src/ECommercePlatform.Api/Program.cs",
+    "backend/src/ECommercePlatform.Api/appsettings.json",
+    "backend/src/ECommercePlatform.Application/DependencyInjection.cs",
+    "backend/src/ECommercePlatform.Application/ECommercePlatform.Application.csproj",
+    "backend/src/ECommercePlatform.Application/Interfaces/ICartService.cs",
+    "backend/src/ECommercePlatform.Application/Interfaces/ICustomerService.cs",
+    "backend/src/ECommercePlatform.Application/Interfaces/IOrderItemService.cs",
+    "backend/src/ECommercePlatform.Application/Interfaces/IOrderService.cs",
+    "backend/src/ECommercePlatform.Application/Interfaces/IProductService.cs",
+    "backend/src/ECommercePlatform.Application/Services/CartService.cs",
+    "backend/src/ECommercePlatform.Application/Services/CustomerService.cs",
+    "backend/src/ECommercePlatform.Application/Services/OrderItemService.cs",
+    "backend/src/ECommercePlatform.Application/Services/OrderService.cs",
+    "backend/src/ECommercePlatform.Application/Services/ProductService.cs",
+    "backend/src/ECommercePlatform.Domain/ECommercePlatform.Domain.csproj",
+    "backend/src/ECommercePlatform.Domain/Entities/Cart.cs",
+    "backend/src/ECommercePlatform.Domain/Entities/Customer.cs",
+    "backend/src/ECommercePlatform.Domain/Entities/Order.cs",
+    "backend/src/ECommercePlatform.Domain/Entities/OrderItem.cs",
+    "backend/src/ECommercePlatform.Domain/Entities/Product.cs",
+    "backend/src/ECommercePlatform.Infrastructure/Data/AppDbContext.cs",
+    "backend/src/ECommercePlatform.Infrastructure/DependencyInjection.cs",
+    "backend/src/ECommercePlatform.Infrastructure/ECommercePlatform.Infrastructure.csproj",
+    "backend/tests/ECommercePlatform.Tests/ECommercePlatform.Tests.csproj",
+    "backend/tests/ECommercePlatform.Tests/SmokeTests.cs",
+    "ci/github-actions.yml",
+    "contracts/openapi.yaml",
+    "contracts/routes.json",
+    "db/README.md",
+    "db/migrations/0001_init.sql",
+    "docker-compose.yml",
+    "frontend/src/App.tsx",
+    "frontend/src/core/api.ts",
+    "frontend/src/features/cart/CartPage.tsx",
+    "frontend/src/features/cart/cart.service.ts",
+    "frontend/src/features/customer/CustomerPage.tsx",
+    "frontend/src/features/customer/customer.service.ts",
+    "frontend/src/features/order-item/OrderItemPage.tsx",
+    "frontend/src/features/order-item/order-item.service.ts",
+    "frontend/src/features/order/OrderPage.tsx",
+    "frontend/src/features/order/order.service.ts",
+    "frontend/src/features/product/ProductPage.tsx",
+    "frontend/src/features/product/product.service.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/shared/PageHeader.tsx"
+  ],
+  "created": "2026-11-27T11:53:02.742697985Z"
+}
